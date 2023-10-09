@@ -48,7 +48,7 @@ resource "aws_security_group" "web-sg" {
   }
 }
 
-resource "aws_instance" "test" {
+resource "aws_instance" "my_Amazon_Linux" {
   ami                    = "ami-053b0d53c279acc90" // Ubuntu server 22.04
   instance_type          = "t2.micro" //instance type
   vpc_security_group_ids = [aws_security_group.web-sg.id]
@@ -60,10 +60,10 @@ resource "aws_instance" "test" {
 }
 
 output "web-address_test_instance_public_dns" {
-  value = aws_instance.test.public_dns
+  value = aws_instance.my_Amazon_Linux.public_dns
 }
 output "web-address_test_instance_public_ip" {
-  value = aws_instance.test.public_ip
+  value = aws_instance.my_Amazon_Linux.public_ip
 }
 
 data "aws_caller_identity" "current" {}
@@ -80,7 +80,7 @@ output "caller_user" {
   value = data.aws_caller_identity.current.user_id
 }
 resource "null_resource" "generate_inventory" {
-  depends_on = [aws_instance.test]
+  depends_on = [aws_instance.my_Amazon_Linux]
 
   provisioner "local-exec" {
     command = "./generate_inventory.sh"
