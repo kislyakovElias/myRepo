@@ -54,7 +54,8 @@ resource "aws_instance" "test" {
   vpc_security_group_ids = [aws_security_group.web-sg.id]
   key_name               = "sep_group"
   tags = {
-    Name = "Test instance_TF"
+    Name = "Main_Ubuntu_instance_SEP"
+    Owner = "SuperFox"
   }
 }
 
