@@ -8,10 +8,10 @@
       when: ansible_os_family == "Debian"
 
     - name: Install Apache web server
-      apt:
+      package:
         name: apache2  # Use 'yum' if you're on a Red Hat-based system
         state: present
-      become: yes
+        become: yes
 
     - name: Start Apache service
       service:
