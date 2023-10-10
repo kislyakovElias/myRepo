@@ -1,0 +1,35 @@
+---
+- name: Build Sample Website
+  hosts: all  # Replace with the target host or group of hosts
+  become: yes
+  tasks:
+    - name: Install Apache web server
+      apt:
+        name: apache2  # Use 'yum' if you're on a Red Hat-based system
+        state: present
+      become: yes
+
+    - name: Start Apache service
+      service:
+        name: apache2  # Use 'httpd' if you're on a Red Hat-based system
+        state: started
+        enabled: yes
+        become: yes
+
+    - name: Create the website directory
+      file:
+        path: /var/www/html  # Change the path as needed
+        state: directory
+
+    - name: Create an index.html file
+      template:
+        src: templates/index.html.j2  # Create a Jinja2 template for your HTML
+        dest: /var/www/html/index.html
+      notify: Reload Apache
+
+  handlers:
+    - name: Reload Apache
+      service:
+        name: apache2
+        state: reloaded
+        become: yes
