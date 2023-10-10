@@ -1,8 +1,12 @@
 ---
 - name: Build Sample Website
   hosts: all  # Replace with the target host or group of hosts
-  become: yes
   tasks:
+    - name: Update cache
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
     - name: Install Apache web server
       apt:
         name: apache2  # Use 'yum' if you're on a Red Hat-based system
