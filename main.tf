@@ -79,10 +79,10 @@ output "caller_arn" {
 output "caller_user" {
   value = data.aws_caller_identity.current.user_id
 }
-resource "null_resource" "generate_inventory" {
-  depends_on = [aws_instance.my_Amazon_Linux]
-
-  provisioner "local-exec" {
-    command = "./generate_inventory.sh"
-  }
-}
+#resource "null_resource" "generate_inventory" {
+#  depends_on = [aws_instance.my_Amazon_Linux]
+#
+#  provisioner "local-exec" {
+#    command = "./generate_inventory.sh"
+#  }
+#}
