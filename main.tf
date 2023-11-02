@@ -28,7 +28,7 @@ provider "aws" {
 #}
 #
 #resource "aws_key_pair" "generated_key" {
-#  key_name   = "test_key"
+#  key_name   = "test_key2"
 #  public_key = tls_private_key.test_key.public_key_openssh
 #}
 
