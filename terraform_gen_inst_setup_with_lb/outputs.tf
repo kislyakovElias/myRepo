@@ -1,10 +1,10 @@
 
 output "web-address_test_instance_1" {
-  value = aws_instance.test_c6a_large_1.public_dns
+  value = aws_instance.test_t3_small_1.public_dns
 }
 
 output "web-address_test_instance_2" {
-  value = aws_instance.test_c6a_large_2.public_dns
+  value = aws_instance.test_t3_small_2.public_dns
 }
 
 output "web-address_lb" {
