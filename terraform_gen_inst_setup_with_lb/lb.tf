@@ -36,12 +36,12 @@ resource "aws_lb_target_group" "test" {
 
 resource "aws_lb_target_group_attachment" "test_1" {
   target_group_arn = aws_lb_target_group.test.arn
-  target_id        = aws_instance.test_c6a_large_1.id
+  target_id        = aws_instance.test_t3_small_1.id
   port             = 80
 }
 
 resource "aws_lb_target_group_attachment" "test_2" {
   target_group_arn = aws_lb_target_group.test.arn
-  target_id        = aws_instance.test_c6a_large_2.id
+  target_id        = aws_instance.test_t3_small_2.id
   port             = 80
 }
